@@ -12,7 +12,7 @@ Plugin 'CodeFalling/fcitx-vim-osx'
 
 # Options
 if you do not need change to zh when you enter insert mode 
-```
+```vim
 let g:fcitx_vim_osx_only_en = 1
 ```
 

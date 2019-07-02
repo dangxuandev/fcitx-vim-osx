@@ -10,6 +10,8 @@ if exists('g:fcitx_remote')
   finish
 endif
 
+let s:only_en = get(g:, 'fcitx_vim_osx_only_en', 0)
+
 set ttimeoutlen=50
 
 if (has("win32") || has("win95") || has("win64") || has("win16"))
@@ -35,6 +37,9 @@ function Fcitx2en()
   endif
 endfunction
 function Fcitx2zh()
+  if s:only_en == 1
+    return
+  endif
   try
     if b:inputtoggle == 1
       let t = system("fcitx-remote -o")

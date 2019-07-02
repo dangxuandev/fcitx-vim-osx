@@ -1,3 +1,7 @@
+# modified
+forked from https://github.com/xcodebuild/fcitx-vim-osx
+remove the feature that when enter insert mode change to zh. just keep en
+
 # fcitx-vim-osx
 Modified fcitx.vim for osx with https://github.com/CodeFalling/fcitx-remote-for-osx
 

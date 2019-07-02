@@ -10,7 +10,7 @@ Use vundle
 Plugin 'CodeFalling/fcitx-vim-osx'
 ```
 
-# options
+# Options
 if you do not need change to zh when you enter insert mode 
 ```
 let g:fcitx_vim_osx_only_en = 1

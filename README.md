@@ -6,6 +6,12 @@ lazy load this plugin. it will reduce 70ms at vim startup.
 Plugin 'CodeFalling/fcitx-vim-osx'
 ```
 
+# Options
+if you do not need change to zh when you enter insert mode 
+```vim
+let g:fcitx_vim_osx_only_en = 1
+```
+
 # For OS X
 
 You have to install https://github.com/CodeFalling/fcitx-remote-for-osx

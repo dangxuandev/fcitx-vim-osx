@@ -10,24 +10,27 @@ if exists('g:fcitx_remote')
   finish
 endif
 
+let s:only_en = get(g:, 'fcitx_vim_osx_only_en', 0)
+let s:fcitx_use_remote = get(g:, 'fcitx_use_remote', v:false)
+let s:fcitx_remote_url = get(g:, 'fcitx_remote_url', 0)
+
 set ttimeoutlen=50
 
 if (has("win32") || has("win95") || has("win64") || has("win16"))
   " Windows 下不要载入
   finish
 endif
-if exists('$SSH_TTY')
-  finish
-endif
-if !executable("fcitx-remote")
-  finish
-endif
+
 let s:keepcpo = &cpo
 let g:loaded_fcitx = 1
 set cpo&vim
 " ---------------------------------------------------------------------
 " Functions:
 function Fcitx2en()
+  if s:fcitx_use_remote == v:true && len(s:fcitx_remote_url) != 0
+    let r = system('wget -q ' . s:fcitx_remote_url . ' -O /dev/null')
+    return
+  endif
   let inputstatus = system("fcitx-remote")
   if inputstatus == 2
     let b:inputtoggle = 1
@@ -35,6 +38,9 @@ function Fcitx2en()
   endif
 endfunction
 function Fcitx2zh()
+  if s:only_en == 1
+    return
+  endif
   try
     if b:inputtoggle == 1
       let t = system("fcitx-remote -o")
